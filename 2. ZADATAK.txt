@@ -1,0 +1,60 @@
+2. c)
+x=[-5:0.5:5]
+[x1 x2]=meshgrid(x,x);
+f=4*x1.^2+6*x2.^2+4*x1.*x2-4*x1-6*x2+4;
+surf(f,x1,x2)
+
+2. d)
+x=[-5:0.1:5]
+[x1 x2]=meshgrid(x,x);
+f=4*x1.^2+6*x2.^2+4*x1.*x2-4*x1-6*x2+4;
+figure(1)
+contour(x1,x2,f);
+xlabel('X1');
+ylabel('X2');
+A=[8 4;4 12];d=[-4;-6];c=4;
+x1=[1;1];
+x2=[-1;1];
+x3=[-1;-1];
+x4=[1;-1];
+mi=0.01;
+for n=1:500
+x1(:,n+1)=x1(:,n)+mi*[A*x1(:,n)+d];
+x2(:,n+1)=x2(:,n)+mi*[A*x2(:,n)+d];
+x3(:,n+1)=x3(:,n)+mi*[A*x3(:,n)+d];
+x4(:,n+1)=x4(:,n)+mi*[A*x4(:,n)+d];
+end
+hold on
+plot(x1(1,:),x1(2,:),'c')
+plot(x2(1,:),x2(2,:),'k')
+plot(x3(1,:),x3(2,:),'r')
+plot(x4(1,:),x4(2,:),'b')
+legend('Konture funkcije', 'Pocetni uslov 1', 'Pocetni uslov 2', 'Pocetni uslov 3', 'Pocetni uslov4','Location','southwest')
+axis([-5 5 -5 5])
+
+2. d)
+x=[-5:0.5:5]
+[x1 x2]=meshgrid(x,x);
+f=4*x1.^2+6*x2.^2+4*x1.*x2-4*x1-6*x2+4;
+A=[8 4;4 12];d=[-4;-6];c=4;
+x1=[1;1];
+x2=[-1;1];
+x3=[-1;-1];
+x4=[1;-1];
+mi=0.01;
+for n=1:500
+x1(:,n+1)=x1(:,n)+mi*[A*x1(:,n)+d];
+x2(:,n+1)=x2(:,n)+mi*[A*x2(:,n)+d];
+x3(:,n+1)=x3(:,n)+mi*[A*x3(:,n)+d];
+x4(:,n+1)=x4(:,n)+mi*[A*x4(:,n)+d];
+ f1(n)=4*x1(1,n)^2+6*x1(2,n)^2+4*x1(1,n)*x1(2,n)-4*x1(1,n)-6*x1(2,n)+4;
+ f2(n)=4*x2(1,n)^2+6*x2(2,n)^2+4*x2(1,n)*x2(2,n)-4*x2(1,n)-6*x2(2,n)+4
+ f3(n)=4*x3(1,n)^2+6*x3(2,n)^2+4*x3(1,n)*x3(2,n)-4*x3(1,n)-6*x3(2,n)+4
+ f4(n)=4*x4(1,n)^2+6*x4(2,n)^2+4*x4(1,n)*x4(2,n)-4*x4(1,n)-6*x4(2,n)+4
+end
+figure
+hold on
+plot(f1(:),'b')
+plot(f2(:),'r')
+plot(f3(:),'m')
+plot(f4(:),'g')
